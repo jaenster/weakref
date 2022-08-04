@@ -63,7 +63,7 @@ func main() {
 	
 	if wr.IsAlive() {
 		fmt.Printf("Point still exists")
-		fmt.Printf(wr.Deref())
+		fmt.Sprintln(wr.Deref())
 	}
 
 	// Remove the only reference to the point

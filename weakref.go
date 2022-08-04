@@ -14,7 +14,7 @@ type WeakRef[T WeakReferable] struct {
 
 func New[T WeakReferable](ref *T) *WeakRef[T] {
 	i := ^uintptr(unsafe.Pointer(&ref))
-	weakRef := &WeakRef[T]{^i}
+	weakRef := &WeakRef[T]{i}
 	runtime.SetFinalizer(ref, func(_ *T) {
 		atomic.StoreUintptr(&weakRef.target, uintptr(0))
 	})
